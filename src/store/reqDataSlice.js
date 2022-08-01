@@ -6,10 +6,11 @@ const reqDataSlice = createSlice({
         {
             reqItems: [],
             subTotal: 0,
+            displaySubtotal:false
         }
     ,
     reducers: {
-        subTotal(state, action) {
+        subTotal(state) {
             state.subTotal =
                 state.reqItems.reduce((accumulator, currentValue) => accumulator + currentValue.total, 0)
         },

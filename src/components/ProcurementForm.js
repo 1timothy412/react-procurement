@@ -27,11 +27,9 @@ const ProcurementForm = (props) => {
 
             }
         ))
-    }
+        dispatch(reqDataActions.subTotal(itemDetail.total))
 
-    console.log(itemDetail.quantity)
-    console.log(itemDetail.price)
-    console.log(itemDetail.quantity * itemDetail.price)
+    }
     useEffect(() => {
         setItemDetail(
             prevState => (
@@ -42,10 +40,6 @@ const ProcurementForm = (props) => {
             )
         )
     }, [itemDetail.quantity, itemDetail.price])
-
-    useEffect(() => {
-        dispatch(reqDataActions.subTotal(itemDetail.total))
-    }, [dispatch, itemDetail])
 
     useEffect(() => {
         dispatch(reqDataActions.addItem(itemDetail))

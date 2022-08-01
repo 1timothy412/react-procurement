@@ -1,11 +1,11 @@
 import ProcurementForm from "./ProcurementForm";
 import Stack from '@mui/material/Stack';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
 
 const Procurement = () => {
-    const subTotal = useSelector( state =>  state.reqData.subTotal)
-
+    console.log('Procurement ran')
+    const subTotal = useSelector(state => state.reqData.subTotal)
     const initialReqItems = [
         {
             id: Math.random(),
@@ -17,7 +17,7 @@ const Procurement = () => {
     ]
     const [reqItems, setReqItems] = useState(initialReqItems)
 
-    function addMoreItemHandler(item) {
+    function addMoreItemHandler() {
         setReqItems(prevItems => (
             [
                 ...prevItems, {
