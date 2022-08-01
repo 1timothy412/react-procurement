@@ -8,7 +8,7 @@ const Procurement = () => {
     const subTotal = useSelector(state => state.reqData.subTotal)
     const initialReqItems = [
         {
-            id: Math.random(),
+            id: Math.floor(Math.random() * 1e7).toString(16),
             name: '',
             quantity: 0,
             price: 0,
@@ -21,7 +21,7 @@ const Procurement = () => {
         setReqItems(prevItems => (
             [
                 ...prevItems, {
-                id: Math.random(),
+                id: Math.floor(Math.random() * 1e7).toString(16),
                 name: '',
                 quantity: 0,
                 price: 0,

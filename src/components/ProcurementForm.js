@@ -6,7 +6,7 @@ import reqDataSlice, {reqDataActions} from "../store/reqDataSlice";
 const ProcurementForm = (props) => {
     const subTotal = useSelector(state => state.reqData.subTotal)
     const items = useSelector(state => state.reqData.reqItems)
-
+    const reqData = useSelector(state=>state.reqData)
     const dispatch = useDispatch()
     console.log('ProcurementForm ran')
     const [itemDetail, setItemDetail] = useState({
@@ -27,7 +27,7 @@ const ProcurementForm = (props) => {
 
             }
         ))
-        dispatch(reqDataActions.subTotal(itemDetail.total))
+
 
     }
     useEffect(() => {
@@ -45,9 +45,14 @@ const ProcurementForm = (props) => {
         dispatch(reqDataActions.addItem(itemDetail))
     }, [dispatch, itemDetail])
 
+    useEffect(() => {
+        dispatch(reqDataActions.subTotal(itemDetail.total))
+    }, [dispatch, itemDetail.total])
+
     console.log('Subtotal for the entire procurement is')
     console.log(subTotal)
     console.log(items)
+    console.log(reqData)
     return (
         <div>
 
@@ -62,6 +67,7 @@ const ProcurementForm = (props) => {
                        variant="outlined"/>
             <TextField disabled={true} type='number' id="total" label={itemDetail.total}
                        variant="outlined" sx={{width: '15ch'}}/>
+
         </div>
     )
 }
